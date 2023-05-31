@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConvertCourrencyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
