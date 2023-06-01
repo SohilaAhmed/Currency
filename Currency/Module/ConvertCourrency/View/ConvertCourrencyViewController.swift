@@ -9,11 +9,23 @@ import UIKit
 
 class ConvertCourrencyViewController: UIViewController {
 
+    @IBOutlet weak var fromBtn: UIButton!
+    @IBOutlet weak var toBtn: UIButton!
+    @IBOutlet weak var covertBtn: UIButton!
+    @IBOutlet weak var fromTF: UITextField!
+    @IBOutlet weak var toTF: UITextField!
+    @IBOutlet weak var datailsBtn: UIButton!
+    
+    var convertCourrencyViewModel : ConvertCourrencyViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        convertCourrencyViewModel = ConvertCourrencyViewModel()
+  
     }
+   
 
+    
 
 }
 
