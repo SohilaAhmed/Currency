@@ -10,6 +10,9 @@
 		2526898889B15BB58E112C81 /* Pods_Currency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1279AE37FD324D188F4B2E18 /* Pods_Currency.framework */; };
 		3ECF4004DADCE551CE7361F6 /* Pods_CurrencyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A455C44A89D6D7C5D5FE3C /* Pods_CurrencyTests.framework */; };
 		6A23A8839E93BE5546E4E821 /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC659B9BD7BFC3E477CF80D /* Pods_Currency_CurrencyUITests.framework */; };
+		7B050F3D2A2BEED000345BFA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B050F3C2A2BEED000345BFA /* DetailsViewController.swift */; };
+		7B050F3F2A2BEEFA00345BFA /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B050F3E2A2BEEFA00345BFA /* Details.storyboard */; };
+		7B050F412A2BF9F800345BFA /* OtherCurrrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B050F402A2BF9F800345BFA /* OtherCurrrenciesModel.swift */; };
 		7B60F50A2A28FD4A009063DD /* GetCourrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F5092A28FD4A009063DD /* GetCourrencyViewModel.swift */; };
 		7B60F50E2A28FDF5009063DD /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F50D2A28FDF5009063DD /* ApiClient.swift */; };
 		7B60F5102A28FE1F009063DD /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F50F2A28FE1F009063DD /* EndPoints.swift */; };
@@ -52,6 +55,9 @@
 		1279AE37FD324D188F4B2E18 /* Pods_Currency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Currency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386B7005AA7C3E1CD6BB5B27 /* Pods-Currency-CurrencyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency-CurrencyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Currency-CurrencyUITests/Pods-Currency-CurrencyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EFE07B059806DC1F3820A0B /* Pods-Currency.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency.release.xcconfig"; path = "Target Support Files/Pods-Currency/Pods-Currency.release.xcconfig"; sourceTree = "<group>"; };
+		7B050F3C2A2BEED000345BFA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		7B050F3E2A2BEEFA00345BFA /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		7B050F402A2BF9F800345BFA /* OtherCurrrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrrenciesModel.swift; sourceTree = "<group>"; };
 		7B60F5092A28FD4A009063DD /* GetCourrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCourrencyViewModel.swift; sourceTree = "<group>"; };
 		7B60F50D2A28FDF5009063DD /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		7B60F50F2A28FE1F009063DD /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
@@ -120,6 +126,40 @@
 				84C37F476EDE161A72DB5316 /* Pods-CurrencyTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7B050F382A2BEE5500345BFA /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				7B050F3B2A2BEE8400345BFA /* Model */,
+				7B050F3A2A2BEE7B00345BFA /* ViewModel */,
+				7B050F392A2BEE7600345BFA /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		7B050F392A2BEE7600345BFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B050F3C2A2BEED000345BFA /* DetailsViewController.swift */,
+				7B050F3E2A2BEEFA00345BFA /* Details.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B050F3A2A2BEE7B00345BFA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B050F3B2A2BEE8400345BFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B050F402A2BF9F800345BFA /* OtherCurrrenciesModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7B60F50B2A28FDBB009063DD /* Model */ = {
@@ -198,6 +238,7 @@
 		7BA49ED52A28035000800927 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				7B050F382A2BEE5500345BFA /* Details */,
 				7BA49ED02A27FD9000800927 /* ConvertCourrency */,
 			);
 			path = Module;
@@ -386,6 +427,7 @@
 				7BDB1E0E2A27D81700FCB41E /* LaunchScreen.storyboard in Resources */,
 				7BA49EDC2A28084700800927 /* ConvertCourrency.storyboard in Resources */,
 				7BDB1E0B2A27D81700FCB41E /* Assets.xcassets in Resources */,
+				7B050F3F2A2BEEFA00345BFA /* Details.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +566,8 @@
 				7B94F2152A2A18CD001FD9E5 /* FromTableViewCell.swift in Sources */,
 				7B60F50A2A28FD4A009063DD /* GetCourrencyViewModel.swift in Sources */,
 				7B60F50E2A28FDF5009063DD /* ApiClient.swift in Sources */,
+				7B050F3D2A2BEED000345BFA /* DetailsViewController.swift in Sources */,
+				7B050F412A2BF9F800345BFA /* OtherCurrrenciesModel.swift in Sources */,
 				7B94F2192A2A598D001FD9E5 /* ConvertCourrencyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
