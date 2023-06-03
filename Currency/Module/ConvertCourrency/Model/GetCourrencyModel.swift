@@ -1,5 +1,5 @@
 //
-//  ConvertCourrencyModel.swift
+//  GetCourrencyModel.swift
 //  Currency
 //
 //  Created by Sohila on 01/06/2023.

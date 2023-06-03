@@ -28,8 +28,12 @@ class NetworkService : Service{
             if let error = error{
                 completionHandeler(nil, error)
             }else{
-                let res = try? JSONDecoder().decode(T.self, from: data!)
-                
+                guard let data = data else {
+                    print(String(describing: error))
+                    return
+                  }
+                let res = try? JSONDecoder().decode(T.self, from: data)
+//                print(String(data: data, encoding: .utf8)!)
                 completionHandeler(res, nil)
             }
             

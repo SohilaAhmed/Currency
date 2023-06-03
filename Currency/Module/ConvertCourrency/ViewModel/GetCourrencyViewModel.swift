@@ -1,5 +1,5 @@
 //
-//  ConvertCourrencyViewModel.swift
+//  GetCourrencyViewModel.swift
 //  Currency
 //
 //  Created by Sohila on 01/06/2023.
@@ -30,8 +30,6 @@ class GetCourrencyViewModel: GetCourrencyViewModelProtocol{
             print(responsData.success)
             currency = Array(responsData.symbols.keys)
             self?.currencyPublish.onNext(currency)
-        }
-        
-        
+        } 
     }
 }
