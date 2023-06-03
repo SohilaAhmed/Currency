@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-Mq-Nul">
                                 <rect key="frame" x="145" y="302" width="103" height="32"/>
@@ -126,11 +126,11 @@
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                     </view>
                     <connections>
-                        <outlet property="covertBtn" destination="KbU-XQ-9tq" id="MA5-2k-scK"/>
                         <outlet property="datailsBtn" destination="K0S-Mq-Nul" id="z3Q-o9-R7v"/>
                         <outlet property="fromBtn" destination="dcW-Uf-qZE" id="ZYV-oo-2ub"/>
                         <outlet property="fromTF" destination="yAx-Rt-yCT" id="rcO-Bw-jTR"/>
                         <outlet property="fromTableView" destination="dzl-LK-YhS" id="QOl-Vv-lVy"/>
+                        <outlet property="swapBtn" destination="KbU-XQ-9tq" id="eu3-Wp-Sc3"/>
                         <outlet property="toBtn" destination="HI2-8r-BAA" id="G6u-mU-8Sx"/>
                         <outlet property="toTF" destination="xHj-cM-VHz" id="XkX-a2-hA6"/>
                         <outlet property="toTableView" destination="cuF-Xp-zl1" id="JqM-af-Tvf"/>

@@ -25,11 +25,12 @@ class GetCourrencyViewModel: GetCourrencyViewModelProtocol{
         var currency: [String] = [String]()
         
         NetworkService.getApi(endPoint: EndPoints.symbols) { [weak self] (data: allCourrency?, error) in
+            guard let self = self else { return }
             guard let responsData = data else{ return}
             print(responsData.symbols.first as Any)
             print(responsData.success)
             currency = Array(responsData.symbols.keys)
-            self?.currencyPublish.onNext(currency)
+            self.currencyPublish.onNext(currency)
         } 
     }
 }

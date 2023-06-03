@@ -12,7 +12,7 @@ import RxCocoa
 protocol ConvertCourrencyViewModelProtocol: AnyObject{
     var amountCurrBehavior: BehaviorRelay<String> { get }
     var fromCurrBehavior: BehaviorRelay<String> { get }
-    var toCurrBehavior: BehaviorRelay<String> { get }
+    var toCurrBehavior: BehaviorRelay<String> { get set }
     var resultCurrencyPublish: PublishSubject<String> { get }
     func compineDataValidation()-> Observable<Bool>
     func convertCourr()
@@ -25,7 +25,7 @@ class ConvertCourrencyViewModel: ConvertCourrencyViewModelProtocol{
     var toCurrBehavior: BehaviorRelay<String> = .init(value: "")
     
     var resultCurrencyPublish: PublishSubject<String> = .init()
-    
+   
     func isAmountDataValied()-> Observable<Bool>{
         amountCurrBehavior.map{ amount in
             return amount != ""
@@ -34,13 +34,13 @@ class ConvertCourrencyViewModel: ConvertCourrencyViewModelProtocol{
     
     func isFromDataValied()-> Observable<Bool>{
         fromCurrBehavior.map{ from in
-            return from != ""
+            return from != "" && from != "From"
         }
     }
     
     func isToDataValied()-> Observable<Bool>{
         toCurrBehavior.map{ to in
-            return to != ""
+            return to != "" && to != "To"
         }
     }
     
@@ -53,14 +53,14 @@ class ConvertCourrencyViewModel: ConvertCourrencyViewModelProtocol{
     func convertCourr(){
         var resCurrency: String = ""
         NetworkService.getApi(endPoint: EndPoints.convert(amount: amountCurrBehavior.value, from: fromCurrBehavior.value, to: toCurrBehavior.value)) { [weak self] (data: ConvertCourrencyModel?, error) in
- 
+            guard let self = self else { return }
             guard let responsData = data else{
                 print(error?.localizedDescription ?? "")
                 return}
             print(responsData.result)
             print(responsData.success)
             resCurrency = "\(responsData.result)"
-            self?.resultCurrencyPublish.onNext(resCurrency)
+            self.resultCurrencyPublish.onNext(resCurrency)
         }
         
     }
