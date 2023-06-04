@@ -26,6 +26,7 @@ class NetworkService : Service{
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: req) { data, response, error in
             if let error = error{
+                print(error.localizedDescription)
                 completionHandeler(nil, error)
             }else{
                 guard let data = data else {
@@ -33,7 +34,7 @@ class NetworkService : Service{
                     return
                   }
                 let res = try? JSONDecoder().decode(T.self, from: data)
-//                print(String(data: data, encoding: .utf8)!)
+                print(String(data: data, encoding: .utf8)!)
                 completionHandeler(res, nil)
             }
             

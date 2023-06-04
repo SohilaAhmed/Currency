@@ -8,20 +8,20 @@
 import Foundation
 import RxSwift
 
-protocol GetCourrencyViewModelProtocol: AnyObject{
+protocol GetCurrencyViewModelProtocol: AnyObject{
     var currencyPublish: PublishSubject<[String]> { get }
     func viewDidLoad()
 }
 
-class GetCourrencyViewModel: GetCourrencyViewModelProtocol{
+class GetCurrencyViewModel: GetCurrencyViewModelProtocol{
     
     var currencyPublish: PublishSubject<[String]> = .init()
     
     func viewDidLoad(){
-        getAllCourr()
+        getAllCurr()
     }
     
-    private func getAllCourr(){
+    private func getAllCurr(){
         var currency: [String] = [String]()
         
         NetworkService.getApi(endPoint: EndPoints.symbols) { [weak self] (data: allCourrency?, error) in

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol ConvertCourrencyViewModelProtocol: AnyObject{
+protocol ConvertCurrencyViewModelProtocol: AnyObject{
     var amountCurrBehavior: BehaviorRelay<String> { get }
     var fromCurrBehavior: BehaviorRelay<String> { get }
     var toCurrBehavior: BehaviorRelay<String> { get set }
@@ -18,7 +18,7 @@ protocol ConvertCourrencyViewModelProtocol: AnyObject{
     func convertCourr()
 }
 
-class ConvertCourrencyViewModel: ConvertCourrencyViewModelProtocol{
+class ConvertCurrencyViewModel: ConvertCurrencyViewModelProtocol{
     
     var amountCurrBehavior: BehaviorRelay<String> = .init(value: "")
     var fromCurrBehavior: BehaviorRelay<String> = .init(value: "")
@@ -52,7 +52,7 @@ class ConvertCourrencyViewModel: ConvertCourrencyViewModelProtocol{
     
     func convertCourr(){
         var resCurrency: String = ""
-        NetworkService.getApi(endPoint: EndPoints.convert(amount: amountCurrBehavior.value, from: fromCurrBehavior.value, to: toCurrBehavior.value)) { [weak self] (data: ConvertCourrencyModel?, error) in
+        NetworkService.getApi(endPoint: EndPoints.convert(amount: amountCurrBehavior.value, from: fromCurrBehavior.value, to: toCurrBehavior.value)) { [weak self] (data: ConvertCurrencyModel?, error) in
             guard let self = self else { return }
             guard let responsData = data else{
                 print(error?.localizedDescription ?? "")

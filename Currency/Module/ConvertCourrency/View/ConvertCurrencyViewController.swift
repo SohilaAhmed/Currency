@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ConvertCourrencyViewController: UIViewController {
+class ConvertCurrencyViewController: UIViewController {
      
     @IBOutlet weak var fromBtn: UIButton!
     @IBOutlet weak var toBtn: UIButton!
@@ -20,8 +20,8 @@ class ConvertCourrencyViewController: UIViewController {
     @IBOutlet weak var fromTableView: UITableView!
     @IBOutlet weak var toTableView: UITableView!
     
-    var getCourrencyViewModel: GetCourrencyViewModelProtocol = GetCourrencyViewModel()
-    var convertCourrencyViewModel: ConvertCourrencyViewModelProtocol = ConvertCourrencyViewModel()
+    var getCurrencyViewModel: GetCurrencyViewModelProtocol = GetCurrencyViewModel()
+    var convertCurrencyViewModel: ConvertCurrencyViewModelProtocol = ConvertCurrencyViewModel()
     var disposeBag = DisposeBag()
     
     
@@ -40,6 +40,8 @@ class ConvertCourrencyViewController: UIViewController {
         checkDataValidation()
         
         swapBtnAction()
+        
+        detailsBtnAction()
     }
     
     func getAllCourrAndPresentItInTables(){
@@ -47,32 +49,32 @@ class ConvertCourrencyViewController: UIViewController {
         presentDataBtnActions(button: toBtn, table: self.toTableView)
         subscribeforFromTable()
         subscribeforToTable()
-        getCourrencyViewModel.viewDidLoad()
+        getCurrencyViewModel.viewDidLoad()
     }
     
     func getAmountFromTF(){
-        fromTF.rx.text.orEmpty.bind(to: convertCourrencyViewModel.amountCurrBehavior).disposed(by: disposeBag)
+        fromTF.rx.text.orEmpty.bind(to: convertCurrencyViewModel.amountCurrBehavior).disposed(by: disposeBag)
          
-        convertCourrencyViewModel.amountCurrBehavior.subscribe(onNext: {title in
+        convertCurrencyViewModel.amountCurrBehavior.subscribe(onNext: {title in
             print(title)
         }).disposed(by: disposeBag)
     }
     
     func calcResulet(){
-        convertCourrencyViewModel.resultCurrencyPublish.bind(to: toTF.rx.text).disposed(by: disposeBag)
+        convertCurrencyViewModel.resultCurrencyPublish.bind(to: toTF.rx.text).disposed(by: disposeBag)
         
-        convertCourrencyViewModel.fromCurrBehavior.subscribe(onNext: {title in
+        convertCurrencyViewModel.fromCurrBehavior.subscribe(onNext: {title in
             print(title)
         }).disposed(by: disposeBag)
-        convertCourrencyViewModel.toCurrBehavior.subscribe(onNext: {title in
+        convertCurrencyViewModel.toCurrBehavior.subscribe(onNext: {title in
             print(title)
         }).disposed(by: disposeBag)
     }
     
     func checkDataValidation(){
-        convertCourrencyViewModel.compineDataValidation().subscribe(onNext: {state in
+        convertCurrencyViewModel.compineDataValidation().subscribe(onNext: {state in
             if state == true{
-                self.convertCourrencyViewModel.convertCourr()
+                self.convertCurrencyViewModel.convertCourr()
             }
         }).disposed(by: disposeBag)
     }
@@ -84,13 +86,26 @@ class ConvertCourrencyViewController: UIViewController {
             self.toBtn.setTitle(self.fromBtn.title(for: .normal), for: .normal)
             self.fromBtn.setTitle(oldToTitle, for: .normal)
             
-            self.convertCourrencyViewModel.toCurrBehavior.accept(self.toBtn.title(for: .normal) ?? "")
-            self.convertCourrencyViewModel.fromCurrBehavior.accept(self.fromBtn.title(for: .normal) ?? "")
+            self.convertCurrencyViewModel.toCurrBehavior.accept(self.toBtn.title(for: .normal) ?? "")
+            self.convertCurrencyViewModel.fromCurrBehavior.accept(self.fromBtn.title(for: .normal) ?? "")
         }.disposed(by: disposeBag)
     }
+    
+    func detailsBtnAction(){
+        datailsBtn.rx.tap.bind{ [weak self] _ in
+            guard let self = self else { return }
+            let storyboard =  UIStoryboard(name: "Details", bundle: nil)
+            let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+            detailsViewController.baseCurr = self.fromBtn.title(for: .normal) ?? ""
+//            self.present(detailsViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(detailsViewController, animated: true)
+        }.disposed(by: disposeBag)
+    }
+    
+    
 }
 
-extension ConvertCourrencyViewController: UITextFieldDelegate{
+extension ConvertCurrencyViewController: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacterSet = CharacterSet.decimalDigits
         let stringCharacterSet = CharacterSet(charactersIn: string)
@@ -98,9 +113,9 @@ extension ConvertCourrencyViewController: UITextFieldDelegate{
     }
 }
 
-extension ConvertCourrencyViewController{
+extension ConvertCurrencyViewController{
     func subscribeforFromTable(){
-        getCourrencyViewModel.currencyPublish
+        getCurrencyViewModel.currencyPublish
             .bind(to: fromTableView
                 .rx
                 .items(cellIdentifier: "FromTableViewCell", cellType: FromTableViewCell.self)){
@@ -114,13 +129,13 @@ extension ConvertCourrencyViewController{
             self.fromBtn.setTitle(cell?.getData(), for: .normal)
             self.fromTableView.isHidden = true
             
-            self.convertCourrencyViewModel.fromCurrBehavior.accept(self.fromBtn.title(for: .normal) ?? "")
+            self.convertCurrencyViewModel.fromCurrBehavior.accept(self.fromBtn.title(for: .normal) ?? "")
             
         }).disposed(by: disposeBag)
     }
     
     func subscribeforToTable(){
-        getCourrencyViewModel.currencyPublish
+        getCurrencyViewModel.currencyPublish
             .bind(to: toTableView
                 .rx
                 .items(cellIdentifier: "ToTableViewCell", cellType: ToTableViewCell.self)){
@@ -135,7 +150,7 @@ extension ConvertCourrencyViewController{
             
             self.toTableView.isHidden = true
             
-            self.convertCourrencyViewModel.toCurrBehavior.accept(self.toBtn.title(for: .normal) ?? "")
+            self.convertCurrencyViewModel.toCurrBehavior.accept(self.toBtn.title(for: .normal) ?? "")
              
         }).disposed(by: disposeBag)
     }

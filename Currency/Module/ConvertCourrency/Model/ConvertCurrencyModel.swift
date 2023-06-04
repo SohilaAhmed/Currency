@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConvertCourrencyModel: Codable {
+struct ConvertCurrencyModel: Codable {
 //    let date, historical: String
 //    let info: Info
 //    let query: Query
