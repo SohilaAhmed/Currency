@@ -74,8 +74,7 @@ class ConvertCurrencyViewController: UIViewController {
     func checkDataValidation(){
         convertCurrencyViewModel.compineDataValidation().subscribe(onNext: {state in
             if state == true{
-                self.convertCurrencyViewModel.convertCourr()
-                self.convertCurrencyViewModel.saveTocoreData()
+                self.convertCurrencyViewModel.convertCourr() 
             }
         }).disposed(by: disposeBag)
     }
@@ -98,8 +97,20 @@ class ConvertCurrencyViewController: UIViewController {
             let storyboard =  UIStoryboard(name: "Details", bundle: nil)
             let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
             detailsViewController.baseCurr = self.fromBtn.title(for: .normal) ?? ""
-//            self.present(detailsViewController, animated: true, completion: nil)
+//            self.present(detailsViewController, animated: true, completion: {
+//                self.fromTF.text = "1"
+//                self.toTF.text = ""
+//                self.toBtn.setTitle("To", for: .normal)
+//                self.fromBtn.setTitle("From", for: .normal)
+//            })
             self.navigationController?.pushViewController(detailsViewController, animated: true)
+            self.fromTF.text = "1"
+            self.toTF.text = ""
+            self.toBtn.setTitle("To", for: .normal)
+            self.fromBtn.setTitle("From", for: .normal)
+            self.convertCurrencyViewModel.fromCurrBehavior.accept(self.fromBtn.title(for: .normal) ?? "")
+            self.convertCurrencyViewModel.toCurrBehavior.accept(self.toBtn.title(for: .normal) ?? "")
+            
         }.disposed(by: disposeBag)
     }
     

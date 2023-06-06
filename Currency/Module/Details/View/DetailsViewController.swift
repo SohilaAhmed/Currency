@@ -13,8 +13,10 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var headerName: UILabel!
     @IBOutlet weak var otherCurrTableView: UITableView!
+    @IBOutlet weak var HistoricalCurrTable: UITableView!
     
     var otherCurrrenciesViewModel: OtherCurrrenciesViewModelProtocol = OtherCurrrenciesViewModel()
+    var historicalCurrencyViewModel: HistoricalCurrencyViewModelProtocol = HistoricalCurrencyViewModel()
     var baseCurr = ""
     var disposeBag = DisposeBag()
     
@@ -24,8 +26,10 @@ class DetailsViewController: UIViewController {
         
         print(baseCurr)
         
-        subscribeforFromTable()
+        subscribeForOtherCurrrenciesTable()
         checkValidationOfBase()
+        subscribeForHistoricalCurrrenciesTable()
+        historicalCurrencyViewModel.getHistoricalCurrrenciesCurr()
     }
     
     func checkValidationOfBase(){
@@ -37,7 +41,7 @@ class DetailsViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    func subscribeforFromTable(){
+    func subscribeForOtherCurrrenciesTable(){
         otherCurrrenciesViewModel.otherCurrencyPublish
             .bind(to: otherCurrTableView
                 .rx
@@ -46,5 +50,14 @@ class DetailsViewController: UIViewController {
                     cell.setCellData(currName: elemnt.key, currRate: String(describing:  elemnt.value))
                 }.disposed(by: disposeBag)
          
+    }
+    
+    func subscribeForHistoricalCurrrenciesTable(){
+        historicalCurrencyViewModel.fetchFromCoreData
+            .bind(to: HistoricalCurrTable
+                .rx
+                .items(cellIdentifier: "HistoricalCurrenciesTableViewCell", cellType: HistoricalCurrenciesTableViewCell.self)){ (index, elemnt, cell) in
+                    cell.setCellData(fromLabel: elemnt.from, toLabel: elemnt.to, amountLabel: elemnt.amount, resultLabel: elemnt.result)
+                }.disposed(by: disposeBag)
     }
 }

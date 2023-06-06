@@ -9,5 +9,5 @@ import Foundation
 
 struct HistoricalCurrencyModel {
     
-    var amount, from, to, result: String?
+    var amount, from, to, result: String
 }

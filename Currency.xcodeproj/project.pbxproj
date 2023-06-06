@@ -15,6 +15,8 @@
 		7B050F412A2BF9F800345BFA /* OtherCurrrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B050F402A2BF9F800345BFA /* OtherCurrrenciesModel.swift */; };
 		7B1AD2B32A2F83A300C1BE3E /* HistoricalCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AD2B22A2F83A300C1BE3E /* HistoricalCurrency.swift */; };
 		7B1AD2B52A2F83FF00C1BE3E /* HistoricalCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AD2B42A2F83FE00C1BE3E /* HistoricalCurrencyModel.swift */; };
+		7B1AD2B72A2FAE1900C1BE3E /* HistoricalCurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AD2B62A2FAE1900C1BE3E /* HistoricalCurrenciesTableViewCell.swift */; };
+		7B1AD2B92A2FB12900C1BE3E /* HistoricalCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AD2B82A2FB12900C1BE3E /* HistoricalCurrencyViewModel.swift */; };
 		7B60F50A2A28FD4A009063DD /* GetCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F5092A28FD4A009063DD /* GetCurrencyViewModel.swift */; };
 		7B60F50E2A28FDF5009063DD /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F50D2A28FDF5009063DD /* ApiClient.swift */; };
 		7B60F5102A28FE1F009063DD /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60F50F2A28FE1F009063DD /* EndPoints.swift */; };
@@ -64,6 +66,8 @@
 		7B050F402A2BF9F800345BFA /* OtherCurrrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrrenciesModel.swift; sourceTree = "<group>"; };
 		7B1AD2B22A2F83A300C1BE3E /* HistoricalCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCurrency.swift; sourceTree = "<group>"; };
 		7B1AD2B42A2F83FE00C1BE3E /* HistoricalCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCurrencyModel.swift; sourceTree = "<group>"; };
+		7B1AD2B62A2FAE1900C1BE3E /* HistoricalCurrenciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCurrenciesTableViewCell.swift; sourceTree = "<group>"; };
+		7B1AD2B82A2FB12900C1BE3E /* HistoricalCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCurrencyViewModel.swift; sourceTree = "<group>"; };
 		7B60F5092A28FD4A009063DD /* GetCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyViewModel.swift; sourceTree = "<group>"; };
 		7B60F50D2A28FDF5009063DD /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		7B60F50F2A28FE1F009063DD /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9E3B032A2D035600EB9A51 /* OtherCurrrenciesViewModel.swift */,
+				7B1AD2B82A2FB12900C1BE3E /* HistoricalCurrencyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9E3B062A2D2BE300EB9A51 /* OtherCurrenciesTableViewCell.swift */,
+				7B1AD2B62A2FAE1900C1BE3E /* HistoricalCurrenciesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 				7B94F2172A2A18F2001FD9E5 /* ToTableViewCell.swift in Sources */,
 				7B94F2152A2A18CD001FD9E5 /* FromTableViewCell.swift in Sources */,
 				7B9E3B072A2D2BE400EB9A51 /* OtherCurrenciesTableViewCell.swift in Sources */,
+				7B1AD2B72A2FAE1900C1BE3E /* HistoricalCurrenciesTableViewCell.swift in Sources */,
 				7B1AD2B32A2F83A300C1BE3E /* HistoricalCurrency.swift in Sources */,
 				7B60F50A2A28FD4A009063DD /* GetCurrencyViewModel.swift in Sources */,
 				7B60F50E2A28FDF5009063DD /* ApiClient.swift in Sources */,
@@ -609,6 +616,7 @@
 				7B050F3D2A2BEED000345BFA /* DetailsViewController.swift in Sources */,
 				7B050F412A2BF9F800345BFA /* OtherCurrrenciesModel.swift in Sources */,
 				7B94F2192A2A598D001FD9E5 /* ConvertCurrencyViewModel.swift in Sources */,
+				7B1AD2B92A2FB12900C1BE3E /* HistoricalCurrencyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

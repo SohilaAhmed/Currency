@@ -64,6 +64,9 @@ class ConvertCurrencyViewModel: ConvertCurrencyViewModelProtocol{
             print(responsData.success)
             resCurrency = "\(responsData.result)"
             self.resCurr.accept(resCurrency)
+            DispatchQueue.main.async {
+                self.saveTocoreData()
+            }
             self.resultCurrencyPublish.onNext(resCurrency)
         }
     }

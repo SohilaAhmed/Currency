@@ -69,7 +69,7 @@ class CoreDataManager
                 let currencyTo = item.value(forKey: "to")
                 let currencyResult = item.value(forKey: "result")
  
-                let historicalCurr = HistoricalCurrencyModel(amount: currencyAmount as? String, from: currencyFrom as? String, to: currencyTo as? String, result: currencyResult as? String)
+                let historicalCurr = HistoricalCurrencyModel(amount: currencyAmount as! String, from: currencyFrom as! String, to: currencyTo as! String, result: currencyResult as! String) 
             
                 arrayOfHistoricalCurrency.append(historicalCurr)
             }
@@ -78,6 +78,7 @@ class CoreDataManager
         {
             print(error.localizedDescription)
         }
+        print(arrayOfHistoricalCurrency)
         return arrayOfHistoricalCurrency
     }
     
