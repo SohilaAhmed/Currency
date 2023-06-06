@@ -75,6 +75,7 @@ class ConvertCurrencyViewController: UIViewController {
         convertCurrencyViewModel.compineDataValidation().subscribe(onNext: {state in
             if state == true{
                 self.convertCurrencyViewModel.convertCourr()
+                self.convertCurrencyViewModel.saveTocoreData()
             }
         }).disposed(by: disposeBag)
     }

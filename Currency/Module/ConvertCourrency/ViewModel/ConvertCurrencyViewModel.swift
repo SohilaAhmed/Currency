@@ -16,6 +16,7 @@ protocol ConvertCurrencyViewModelProtocol: AnyObject{
     var resultCurrencyPublish: PublishSubject<String> { get }
     func compineDataValidation()-> Observable<Bool>
     func convertCourr()
+    func saveTocoreData()
 }
 
 class ConvertCurrencyViewModel: ConvertCurrencyViewModelProtocol{
@@ -25,7 +26,9 @@ class ConvertCurrencyViewModel: ConvertCurrencyViewModelProtocol{
     var toCurrBehavior: BehaviorRelay<String> = .init(value: "")
     
     var resultCurrencyPublish: PublishSubject<String> = .init()
-   
+    
+    var resCurr: BehaviorRelay<String> = .init(value: "")
+    
     func isAmountDataValied()-> Observable<Bool>{
         amountCurrBehavior.map{ amount in
             return amount != ""
@@ -60,8 +63,13 @@ class ConvertCurrencyViewModel: ConvertCurrencyViewModelProtocol{
             print(responsData.result)
             print(responsData.success)
             resCurrency = "\(responsData.result)"
+            self.resCurr.accept(resCurrency)
             self.resultCurrencyPublish.onNext(resCurrency)
         }
-        
+    }
+    
+    func saveTocoreData(){
+        CoreDataManager.saveToCoreData(currencyAmount: self.amountCurrBehavior.value, currencyFrom: self.fromCurrBehavior.value, currencyTo: self.toCurrBehavior.value, currencyResult: self.resCurr.value)
     }
 }
+        
