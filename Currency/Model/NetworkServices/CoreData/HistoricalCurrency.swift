@@ -4,7 +4,7 @@
 //
 //  Created by Sohila on 06/06/2023.
 //
- 
+
 import CoreData
 import UIKit
 
@@ -13,11 +13,9 @@ class CoreDataManager
     static var context : NSManagedObjectContext?
     static var appDelegate : AppDelegate?
     
-    
     static func saveToCoreData(currencyAmount: String , currencyFrom: String, currencyTo: String , currencyResult: String)
     {
         appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
         context = appDelegate?.persistentContainer.viewContext
         
         guard let myContext = context else{return}
@@ -27,10 +25,7 @@ class CoreDataManager
         guard let myEntity = entity else{return}
         
         do{
-            
             let historicalCurrencies = NSManagedObject(entity: myEntity, insertInto: myContext)
-            
-            
             historicalCurrencies.setValue(currencyAmount, forKey: "amount")
             historicalCurrencies.setValue(currencyFrom, forKey: "from")
             historicalCurrencies.setValue(currencyTo, forKey: "to")
@@ -45,16 +40,12 @@ class CoreDataManager
         }
     }
     
-    
-   
     static func fetchFromCoreData() ->[HistoricalCurrencyModel]
     {
         appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
         context = appDelegate?.persistentContainer.viewContext
-         
-        let fetch = NSFetchRequest<NSManagedObject>(entityName: "HistoricalCurrency")
         
+        let fetch = NSFetchRequest<NSManagedObject>(entityName: "HistoricalCurrency")
         var arrayOfHistoricalCurrency : [HistoricalCurrencyModel] = []
         
         do{
@@ -68,9 +59,9 @@ class CoreDataManager
                 let currencyFrom = item.value(forKey: "from")
                 let currencyTo = item.value(forKey: "to")
                 let currencyResult = item.value(forKey: "result")
- 
-                let historicalCurr = HistoricalCurrencyModel(amount: currencyAmount as! String, from: currencyFrom as! String, to: currencyTo as! String, result: currencyResult as! String) 
-            
+                
+                let historicalCurr = HistoricalCurrencyModel(amount: currencyAmount as! String, from: currencyFrom as! String, to: currencyTo as! String, result: currencyResult as! String)
+                
                 arrayOfHistoricalCurrency.append(historicalCurr)
             }
             
